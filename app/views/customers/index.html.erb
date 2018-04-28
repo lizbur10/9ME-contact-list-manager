@@ -1,0 +1,6 @@
+<h1>Email Lists</h1>
+<ol>
+<% @customers.each do |customer|%>
+    <li><%= customer["name"] %>, List id: <%= customer["id"] %>, Contacts: <%=customer["contact_count"] %></li>
+<%end%>
+</ol>

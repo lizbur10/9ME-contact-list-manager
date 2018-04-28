@@ -1,0 +1,9 @@
+<h1>Workplace Wellness Accounts</h1>
+<h2>Account Manager: <%= @manager.name %></h2>
+<table class="accounts">
+<tr><th>Company</th><th>Email List</th><th>Delivery Day</th><th>Window</th><th>Location</th></tr>
+<%@accounts.each do |account|%>
+    <tr><td><%=account.company_name%></td><td><%=account.email_list%></td><td><%=account.delivery_day%></td><td><%=account.delivery_window%></td><td><%=account.location%></td><td><%=button_to 'Edit', edit_account_path(account), method: "get" %></td></tr>
+<%end%>
+</table>
+<%=button_to "Add New account", new_account_path, method: 'get'%>

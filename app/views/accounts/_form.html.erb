@@ -1,0 +1,9 @@
+<%= form_for account do |f| %>
+    Company Name: <br /><%= f.text_field :company_name, size: 30 %><br />
+    Email List: <br /><%= f.text_field :email_list, size: 30 %><br />
+    Account Manager: <br /><%= f.select :manager_id, Manager.all.collect { |m| [m.name, m.id] } %><br />
+    Delivery Day: <br /><%= f.text_field :delivery_day %><br />
+    Window: <br /><%= f.text_field :delivery_window %><br />
+    Location: <br /><%= f.text_field :location %><br />
+<%=f.submit%>
+<%end%>
