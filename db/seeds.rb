@@ -5,3 +5,31 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+DATA_managers = {
+    :manager_keys =>
+        ["name", "contact_info", "market"],
+    :managers => [
+        ['Matt', 'matt@mail.com', 'Albany'],
+        ['Tyler', 'tylerspangenberg@gmail.com', 'Albany'],
+        ['TJ', 'tj@mail.com', 'Albany'],
+        ['Lyssa', 'lyssa@mail.com', 'Albany'],
+        ['Gordon', 'gordon@9mileseast.com', 'Boston'],
+        ['Nick', 'nick@9mileseast.com', 'Boston'],
+        ['Sarah', 'smvkoo@gmail.com', 'Boston'],
+        ['Matt W', 'matthew.f.watson2@gmail.com', 'Boston'],
+        ['Elli', 'ellijlevy@gmail.com', 'Boston'],
+        ['Liz', 'liz.burton147@gmail.com', 'Boston'],
+    ]
+}
+
+def make_managers
+    DATA_managers[:managers].each do |manager|
+        new_manager = Manager.new
+        manager.each_with_index do |attribute, i|
+            new_manager.send(DATA_managers[:manager_keys][i]+"=", attribute)
+        end
+        new_manager.save
+    end
+end
+
+make_managers
