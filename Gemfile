@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'rest-client'
 gem 'dotenv-rails'
+gem 'faraday'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
