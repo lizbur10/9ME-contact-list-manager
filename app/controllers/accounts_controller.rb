@@ -1,16 +1,17 @@
 require 'pry'
 require 'json'
 require 'net/http'
+require 'csv'
 
 class AccountsController < ApplicationController
     before_action :get_account
-    skip_before_action :get_account, only: [:new, :create, :index]
+    skip_before_action :get_account, only: [:new, :create, :index, :upload]
     BASE_URI = "https://api.constantcontact.com/v2"
 
     def index
-        @manager = Manager.find(1)
+        @manager = Manager.find(2)
         @accounts = @manager.accounts.all.sort_by do |account|
-            to_start_time(account.delivery_window)
+            [ to_day_of_week(account.delivery_day), to_start_time(account.delivery_window) ]
         end
     end
 
@@ -40,6 +41,18 @@ class AccountsController < ApplicationController
         redirect_to accounts_path
     end
 
+    def upload
+        CSV.foreach(params[:accounts].path, headers: true) do |account|
+            new_account = Account.create(market: account[0], delivery_day: account[2], delivery_window: account[3], 
+                company_name: account[4], email_list: account[5], location: account[6])
+            new_account.manager = Manager.find_by(:name => account[1])
+            binding.pry
+            new_account.save
+          end
+          redirect_to accounts_path
+      
+    end
+
     private
 
     def get_account
@@ -48,6 +61,7 @@ class AccountsController < ApplicationController
 
     def account_params
         params.require(:account).permit(
+            :market,
             :company_name, 
             :email_list,
             :delivery_day,
@@ -57,8 +71,15 @@ class AccountsController < ApplicationController
             )
     end
 
+
+    def to_day_of_week(day)
+        Date.parse(day,"%w")
+    end
+
     def to_start_time(window)
-        Time.parse(window.match(/\d+:\d{2}/)[0])
+        time = window.match(/\d+:\d{2}/)[0]
+        # Time.parse(window.match(/\d+:\d{2}/)[0])
+        binding.pry
     end
 
     def find_list(email_list)
@@ -92,10 +113,10 @@ class AccountsController < ApplicationController
 
     def update_contact(account, contact)
         if contact["custom_fields"].length > 0
-            contact["custom_fields"][0]["value"] = "#{account.manager.name}, #{account.manager.email}" 
+            contact["custom_fields"][0]["value"] = "#{account.manager.name}, #{account.manager.contact_info}" 
             contact["custom_fields"][1]["value"] = "#{account.delivery_day}, #{account.delivery_window}, #{account.location}"
         else
-            contact["custom_fields"] << {"name": "CustomField1", "label": "CustomField1", "value": "#{account.manager.name}, #{account.manager.email}"}
+            contact["custom_fields"] << {"name": "CustomField1", "label": "CustomField1", "value": "#{account.manager.name}, #{account.manager.contact_info}"}
             contact["custom_fields"] << {"name": "CustomField2", "label": "CustomField2", "value": "#{account.delivery_day}, #{account.delivery_window}, #{account.location}"}
         end
         contact
