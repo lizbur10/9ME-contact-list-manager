@@ -35,7 +35,6 @@ class AccountsController < ApplicationController
         contacts.each do |contact|
             contact_from_ctct = retrieve_contact(contact["id"])
             updated_contact = update_contact(@account, contact_from_ctct)
-            binding.pry
             post_updated_contact(updated_contact)
         end
         redirect_to accounts_path
@@ -77,9 +76,12 @@ class AccountsController < ApplicationController
     end
 
     def to_start_time(window)
-        time = window.match(/\d+:\d{2}/)[0]
-        # Time.parse(window.match(/\d+:\d{2}/)[0])
-        binding.pry
+        start_hour = window.match(/\d{1,2}/)[0]
+        if start_hour.to_i < 6
+            return start_hour.to_i + 12
+        else
+            return start_hour.to_i
+        end
     end
 
     def find_list(email_list)
