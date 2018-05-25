@@ -7,18 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 DATA_managers = {
     :manager_keys =>
-        ["name", "contact_info", "market"],
+        ["name", "contact_info", "market", "role"],
     :managers => [
-        ['Matt', '??', 'Albany'],
-        ['Tyler', 'tylerspangenberg@gmail.com', 'Albany'],
-        ['TJ', '??', 'Albany'],
-        ['Lyssa', '??', 'Albany'],
-        ['Gordon', 'gordon@9mileseast.com', 'Boston'],
-        ['Nick', 'nick@9mileseast.com', 'Boston'],
-        ['Sarah', 'smvkoo@gmail.com', 'Boston'],
-        ['Matt W', 'matthew.f.watson2@gmail.com', 'Boston'],
-        ['Elli', 'ellijlevy@gmail.com', 'Boston'],
-        ['Liz', 'liz.burton147@gmail.com', 'Boston']
+        ['Matt', '??', 'Albany', 'user'],
+        ['Tyler', 'tylerspangenberg@gmail.com', 'Albany', 'user'],
+        ['TJ', '??', 'Albany', 'user'],
+        ['Lyssa', '??', 'Albany', 'user'],
+        ['Gordon', 'gordon@9mileseast.com', 'Boston', 'user'],
+        ['Nick', 'nick@9mileseast.com', 'Boston', 'user'],
+        ['Sarah', 'smvkoo@gmail.com', 'Boston', 'user'],
+        ['Matt W', 'matthew.f.watson2@gmail.com', 'Boston', 'user'],
+        ['Elli', 'ellijlevy@gmail.com', 'Boston', 'user'],
+        ['Liz', 'liz.burton147@gmail.com', 'Boston', 'admin']
     ]
 }
 

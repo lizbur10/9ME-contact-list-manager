@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20180410205953) do
     t.string "name"
     t.string "contact_info"
     t.string "market"
+    t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
