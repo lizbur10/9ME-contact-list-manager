@@ -9,16 +9,16 @@ DATA_managers = {
     :manager_keys =>
         ["name", "contact_info", "market"],
     :managers => [
-        ['Matt', 'matt@mail.com', 'Albany'],
+        ['Matt', '??', 'Albany'],
         ['Tyler', 'tylerspangenberg@gmail.com', 'Albany'],
-        ['TJ', 'tj@mail.com', 'Albany'],
-        ['Lyssa', 'lyssa@mail.com', 'Albany'],
+        ['TJ', '??', 'Albany'],
+        ['Lyssa', '??', 'Albany'],
         ['Gordon', 'gordon@9mileseast.com', 'Boston'],
         ['Nick', 'nick@9mileseast.com', 'Boston'],
         ['Sarah', 'smvkoo@gmail.com', 'Boston'],
         ['Matt W', 'matthew.f.watson2@gmail.com', 'Boston'],
         ['Elli', 'ellijlevy@gmail.com', 'Boston'],
-        ['Liz', 'liz.burton147@gmail.com', 'Boston'],
+        ['Liz', 'liz.burton147@gmail.com', 'Boston']
     ]
 }
 

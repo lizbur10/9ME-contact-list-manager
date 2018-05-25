@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20180410205953) do
   create_table "managers", force: :cascade do |t|
     t.string "name"
     t.string "contact_info"
+    t.string "market"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
