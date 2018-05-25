@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :accounts
   end
   resources :accounts
+  post 'accounts/upload', to: 'accounts#upload'
   root 'site#index'
 
 
