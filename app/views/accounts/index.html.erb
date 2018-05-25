@@ -1,4 +1,9 @@
 <h1>Workplace Wellness Accounts</h1>
+<%= form_tag accounts_upload_path, multipart: true do %>
+    <%= file_field_tag :accounts %>
+    <%= submit_tag "Import Accounts" %>
+<% end %>
+
 <h2>Account Manager: <%= @manager.name %></h2>
 <table class="accounts">
 <tr><th>Company</th><th>Email List</th><th>Delivery Day</th><th>Window</th><th>Location</th></tr>
