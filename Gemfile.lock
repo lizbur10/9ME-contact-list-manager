@@ -60,10 +60,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
- dependabot/bundler/loofah-2.4.0
     concurrent-ruby (1.1.6)
     crass (1.0.4)
- master
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.4.0)
@@ -182,7 +180,7 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.8)
+    uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
